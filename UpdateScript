@@ -1,0 +1,80 @@
+#! /bin/bash
+
+RED='\033[0;31m'
+NC='\033[0m'
+
+echo -e "${RED}Do you want to update the system?${NC}"
+read answer
+
+if [[ "$answer" == "yes" ]];
+then
+	sudo apt update
+	echo -e "${RED}Do you want to see the upgradable packages${NC}"
+	read answerPackages
+	
+	if [[ "$answerPackages" == "yes" ]];
+	then
+		apt list --upgradable
+		echo -e "${RED}Do you still want to proceed with the upgrade?${NC}"
+		read answerUpgrade
+		if [[ "$answerUpgrade" == "yes"	]];
+		then 
+			sudo apt -y dist-upgrade
+			echo -e "${RED}The system is up to date${NC}"
+		else
+			echo -e "${RED}Why did you run the script than?${NC}"
+			exit 0;
+		fi
+	else
+		sudo apt -y dist-upgrade
+		echo -e "${RED}The system is up to date now${NC}"
+	fi
+
+else
+	echo -e "${RED}Why did you run the script than?${NC}"
+fi
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
